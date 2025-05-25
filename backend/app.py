@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from database import Database
@@ -329,7 +330,7 @@ if __name__ == '__main__':
     print("")
     print("Rodando em: http://localhost:5000")
     
-       # Configuração para produção
+    # Configuração para produção
     port = int(os.environ.get('PORT', 5000))
     debug = os.environ.get('FLASK_ENV') != 'production'
     
