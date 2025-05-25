@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import API_URL from "../config";
 
 export default function Funcionarios() {
   const [funcionarios, setFuncionarios] = useState([]);
@@ -21,7 +22,7 @@ export default function Funcionarios() {
     setError("");
 
     try {
-      const response = await fetch("/api/funcionarios");
+      const response = await fetch(`${API_URL}/api/funcionarios`);
 
       if (!response.ok) {
         throw new Error("Erro ao carregar funcionarios");
@@ -55,7 +56,7 @@ export default function Funcionarios() {
         cargo: cargo,
       };
 
-      const response = await fetch("/api/funcionarios", {
+      const response = await fetch(`${API_URL}/api/funcionarios`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,9 +91,12 @@ export default function Funcionarios() {
     }
 
     try {
-      const response = await fetch(`/api/funcionarios/${funcionarioId}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `${API_URL}/api/funcionarios/${funcionarioId}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();

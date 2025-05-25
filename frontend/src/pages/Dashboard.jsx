@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import API_URL from "../config";
 
 export default function Dashboard() {
   const [stats, setStats] = useState(null);
@@ -15,7 +16,7 @@ export default function Dashboard() {
     setError("");
 
     try {
-      const response = await fetch("/api/stats");
+      const response = await fetch(`${API_URL}/api/stats`);
 
       if (!response.ok) {
         throw new Error("Erro ao carregar dados");

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import API_URL from "../config";
 
 export default function Produtos() {
   const [produtos, setProdutos] = useState([]);
@@ -21,7 +22,7 @@ export default function Produtos() {
     setError("");
 
     try {
-      const response = await fetch("/api/produtos");
+      const response = await fetch(`${API_URL}/api/produtos`);
 
       if (!response.ok) {
         throw new Error("Erro ao carregar produtos");
@@ -56,7 +57,7 @@ export default function Produtos() {
         quantidade: qtd,
       };
 
-      const response = await fetch("/api/produtos", {
+      const response = await fetch(`${API_URL}/api/produtos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +92,7 @@ export default function Produtos() {
     }
 
     try {
-      const response = await fetch(`/api/produtos/${produtoId}`, {
+      const response = await fetch(`${API_URL}/api/produtos/${produtoId}`, {
         method: "DELETE",
       });
 
