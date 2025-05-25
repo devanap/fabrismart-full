@@ -1,5 +1,3 @@
-# backend/app.py
-# API Flask - experiencia intermediaria com APIs e validacao
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from database import Database
@@ -122,7 +120,7 @@ def criar_produto():
             return jsonify(produto), 201
             
         except Exception as e:
-            # Verifica se eh erro de duplicata
+            # Verifica se é erro de duplicata
             if 'UNIQUE constraint failed' in str(e):
                 return jsonify({'error': 'Produto ja existe nesta categoria'}), 409
             else:
