@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import API_URL from "../config";
 
 export default function Home() {
   const [statusApi, setStatusApi] = useState("verificando");
@@ -10,7 +11,7 @@ export default function Home() {
 
   async function verificarApi() {
     try {
-      const response = await fetch("/api/health");
+      const response = await fetch(`${API_URL}/api/health`);
 
       if (response.ok) {
         setStatusApi("conectado");
